@@ -24,7 +24,7 @@ class Ui_editAdminDialog(object):
         self.newAdminBtns.setEnabled(True)
         self.newAdminBtns.setGeometry(QtCore.QRect(230, 380, 221, 41))
         self.newAdminBtns.setOrientation(QtCore.Qt.Horizontal)
-        self.newAdminBtns.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.newAdminBtns.setStandardButtons(QtWidgets.QDialogButtonBox.Save)
         self.newAdminBtns.setObjectName("newAdminBtns")
         self.usernameFld = QtWidgets.QLineEdit(editAdminDialog)
         self.usernameFld.setGeometry(QtCore.QRect(30, 50, 421, 31))
@@ -70,6 +70,7 @@ class Ui_editAdminDialog(object):
         self.middleNameFld = QtWidgets.QLineEdit(editAdminDialog)
         self.middleNameFld.setGeometry(QtCore.QRect(30, 260, 421, 31))
         self.middleNameFld.setObjectName("middleNameFld")
+        self.middleNameFld.setPlaceholderText("(Optional)")
         self.lastNameLbl = QtWidgets.QLabel(editAdminDialog)
         self.lastNameLbl.setGeometry(QtCore.QRect(30, 300, 421, 31))
         font = QtGui.QFont()
@@ -87,6 +88,31 @@ class Ui_editAdminDialog(object):
         self.firstNameFld.setText(self.admin.fName)
         self.middleNameFld.setText(self.admin.mName)
         self.lastNameFld.setText(self.admin.lName)
+        self.label = QtWidgets.QLabel(editAdminDialog)
+        self.label.setGeometry(QtCore.QRect(190, 80, 121, 21))
+        self.label.setStyleSheet("color: #a94442;")
+        self.label.setText("")
+        self.label.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(editAdminDialog)
+        self.label_2.setGeometry(QtCore.QRect(190, 150, 121, 21))
+        self.label_2.setStyleSheet("color: #a94442;")
+        self.label_2.setText("")
+        self.label_2.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(editAdminDialog)
+        self.label_3.setGeometry(QtCore.QRect(190, 220, 121, 21))
+        self.label_3.setStyleSheet("color: #a94442;")
+        self.label_3.setText("")
+        self.label_3.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(editAdminDialog)
+        self.label_4.setGeometry(QtCore.QRect(190, 360, 121, 21))
+        self.label_4.setStyleSheet("color: #a94442;")
+        self.label_4.setText("")
+        self.label_4.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.label_4.setObjectName("label_4")
+
         self.retranslateUi(editAdminDialog)
         self.newAdminBtns.accepted.connect(self.okButton)
         self.newAdminBtns.rejected.connect(editAdminDialog.reject)
@@ -107,19 +133,58 @@ class Ui_editAdminDialog(object):
         fName = self.firstNameFld.text()
         mName = self.middleNameFld.text()
         lName = self.lastNameFld.text()
+        count = 0
         # sb = self.buttonBox.standardButton(button)
         # if self.newAdminBtns.:
+
+
         
-        if username == "" or password == "" or fName == "" or lName == "":
+        if username == "":
             print("EMPTY FIELDS")
             # #FF0000
-            # INSERT ERRORS HERE
+            self.label.setText("Please fill out this field.")
         else:
+            self.label.setText("")
             mydb = mc.connect(
-                host="localhost",
-                user="root",
-                password="",
-                database="db_sars"
+            host="localhost",
+            user="root",
+            password="",
+            database="db_sars"
+            )
+            mycursor = mydb.cursor()
+            query = "SELECT * FROM admin WHERE '" + username + "' LIKE username"
+            mycursor.execute(query)
+            result = mycursor.fetchone()
+
+            if result is None:
+                count += 1
+            else:
+                self.label.setText("Username already taken")
+
+        if password == "":
+            self.label_2.setText("Please fill out this field.")
+        else:
+            self.label_2.setText("")
+            count += 1
+
+        if fName == "":
+            self.label_3.setText("Please fill out this field.")
+        else:
+            self.label_3.setText("")
+            count += 1
+
+        if lName == "":
+            self.label_4.setText("Please fill out this field.")
+        else:
+            self.label_4.setText("")
+            count += 1
+
+        if count == 4:
+            mydb = mc.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="db_sars"
             )
             mycursor = mydb.cursor()
             query = f"UPDATE admin SET username = '{username}', password = '{password}', firstname = '{fName}', middlename = '{mName}', lastname = '{lName}' WHERE admin_id LIKE {self.admin.userId}"
@@ -128,6 +193,7 @@ class Ui_editAdminDialog(object):
             print("Aba ayos ah")
             self.mainPage.loadAdminTable()
             self.editAdminDialog.close()
+
 
 if __name__ == "__main__":
     import sys

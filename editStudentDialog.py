@@ -25,7 +25,7 @@ class Ui_editStudentDialog(object):
         self.newStudentBtns.setEnabled(True)
         self.newStudentBtns.setGeometry(QtCore.QRect(230, 470, 221, 41))
         self.newStudentBtns.setOrientation(QtCore.Qt.Horizontal)
-        self.newStudentBtns.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.newStudentBtns.setStandardButtons(QtWidgets.QDialogButtonBox.Save)
         self.newStudentBtns.setObjectName("newStudentBtns")
         self.studentIdFld = QtWidgets.QLineEdit(editStudentDialog)
         self.studentIdFld.setGeometry(QtCore.QRect(30, 50, 421, 31))
@@ -100,6 +100,36 @@ class Ui_editStudentDialog(object):
         self.lastNameFld.setText(self.student.lName)
         self.courseFld.setText(self.student.course)
         self.yrFld.setText(self.student.section)
+        self.label = QtWidgets.QLabel(editStudentDialog)
+        self.label.setGeometry(QtCore.QRect(190, 80, 121, 21))
+        self.label.setStyleSheet("color: #a94442;")
+        self.label.setText("")
+        self.label.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(editStudentDialog)
+        self.label_2.setGeometry(QtCore.QRect(190, 150, 121, 21))
+        self.label_2.setStyleSheet("color: #a94442;")
+        self.label_2.setText("")
+        self.label_2.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(editStudentDialog)
+        self.label_3.setGeometry(QtCore.QRect(190, 290, 121, 21))
+        self.label_3.setStyleSheet("color: #a94442;")
+        self.label_3.setText("")
+        self.label_3.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(editStudentDialog)
+        self.label_4.setGeometry(QtCore.QRect(190, 360, 121, 21))
+        self.label_4.setStyleSheet("color: #a94442;")
+        self.label_4.setText("")
+        self.label_4.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.label_4.setObjectName("label_4")
+        self.label_5 = QtWidgets.QLabel(editStudentDialog)
+        self.label_5.setGeometry(QtCore.QRect(190, 430, 121, 21))
+        self.label_5.setStyleSheet("color: #a94442;")
+        self.label_5.setText("")
+        self.label_5.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.label_5.setObjectName("label_5")
 
         self.retranslateUi(editStudentDialog)
         self.newStudentBtns.accepted.connect(self.okButton)
@@ -123,15 +153,44 @@ class Ui_editStudentDialog(object):
         lName = self.lastNameFld.text()
         course = self.courseFld.text()
         yrs = self.yrFld.text()
+        count = 0
 
-        if studentNo == "" or fName == "" or lName == "" or course == "" or yrs == "":
-            print("ERROR")
+        if studentNo == "":
+            self.label.setText("Please fill out this field.")
         else:
+            self.label.setText("")
+            count += 1
+
+        if fName == "":
+            self.label_2.setText("Please fill out this field.")
+        else:
+            self.label_2.setText("")
+            count += 1
+
+        if lName == "":
+            self.label_3.setText("Please fill out this field.")
+        else:
+            self.label_3.setText("")
+            count += 1
+
+        if course == "":
+            self.label_4.setText("Please fill out this field.")
+        else:
+            self.label_4.setText("")
+            count += 1
+
+        if yrs == "":
+            self.label_5.setText("Please fill out this field.")
+        else:
+            self.label_5.setText("")
+            count += 1
+
+        if count == 5:
             mydb = mc.connect(
-                host="localhost",
-                user="root",
-                password="",
-                database="db_sars"
+            host="localhost",
+            user="root",
+            password="",
+            database="db_sars"
             )
             mycursor = mydb.cursor()
             query = f"UPDATE student SET student_no = '{studentNo}', firstname = '{fName}', middlename = '{mName}', lastname = '{lName}', course = '{course}', section = '{yrs}' WHERE student_id LIKE {self.student.student_id}"

@@ -5,7 +5,7 @@ from PyQt5.QtGui import QPixmap
 import mysql.connector as mc
 from PyQt5.uic import loadUi
 import datetime
-import time
+from PyQt5.uic import loadUi
 from newAdminDialog import Ui_newAdminDialog
 from editAdminDialog import Ui_editAdminDialog
 from newStudentDialog import Ui_newStudentDialog
@@ -31,8 +31,9 @@ class mainPage(QMainWindow):
 
     def attendance(self):
         studentNo = self.studNo.text()
-        time = "time now"
-        date = "date now"
+        dateTime = datetime.datetime.now()
+        date = ('%04d-%02d-%02d' % (dateTime.year, dateTime.month, dateTime.day))
+        time = ('%02d:%02d' % (dateTime.hour, dateTime.minute))
 
         if studentNo == "":
             self.studentValid.setText("Please fill up the field")
@@ -77,7 +78,7 @@ class mainPage(QMainWindow):
                     studNo = row [1]
                 studentName = (fname+" "+lname)
                 self.beenLogin.setText("You have been login:")
-                self.nameTime.setText(f"{studentName} at {datetime.datetime.now()}")
+                self.nameTime.setText(f"{studentName} at {time}")
                 #should display time.now
                 #also use setstylesheet, diff color for name and time
                 self.studNo.clear()
@@ -280,13 +281,24 @@ class AdminButtonsWidget(QWidget):
 
         # adjust spacings to your needs
         self.layout.setContentsMargins(0,0,0,0)
-        self.layout.setSpacing(0)
+        self.layout.setSpacing(5)
 
         self.editBtn = QPushButton('Edit')
-        self.deleteBtn = QPushButton('Delete')
+        self.editBtn.setStyleSheet("QPushButton {color: #fff; "
+                                   "background-color: #f0ad4e;"
+                                   "border-radius:2px;"
+                                   "padding:10px;"
+                                   "border-color: #eea236;}")
+        self.deleteBtn = QPushButton('X')
+        self.deleteBtn.setStyleSheet("QPushButton {color: #fff; "
+                                     "background-color: #d9534f;"
+                                     "border-radius:2px;"
+                                     "padding:10px;"
+                                     "border-color: #d43f3a;}")
+
         # add your buttons
-        self.layout.addWidget(self.editBtn)
         self.layout.addWidget(self.deleteBtn)
+        self.layout.addWidget(self.editBtn)
         self.setLayout(self.layout)
         self.editBtn.clicked.connect(self.editButton)
         self.deleteBtn.clicked.connect(self.deleteButton)
@@ -326,13 +338,24 @@ class StudentButtonsWidget(QWidget):
 
         # adjust spacings to your needs
         self.layout.setContentsMargins(0,0,0,0)
-        self.layout.setSpacing(0)
+        self.layout.setSpacing(5)
 
         self.editBtn = QPushButton('Edit')
-        self.deleteBtn = QPushButton('Delete')
+        self.editBtn.setStyleSheet("QPushButton {color: #fff; "
+                                     "background-color: #f0ad4e;"
+                                     "border-radius:2px;"
+                                     "padding:10px;"
+                                     "border-color: #eea236;}")
+        self.deleteBtn = QPushButton('X')
+        self.deleteBtn.setStyleSheet("QPushButton {color: #fff; "
+                                     "background-color: #d9534f;"
+                                     "border-radius:2px;"
+                                     "padding:10px;"
+                                     "border-color: #d43f3a;}")
+
         # add your buttons
-        self.layout.addWidget(self.editBtn)
         self.layout.addWidget(self.deleteBtn)
+        self.layout.addWidget(self.editBtn)
         self.setLayout(self.layout)
         self.editBtn.clicked.connect(self.editButton)
         self.deleteBtn.clicked.connect(self.deleteButton)
@@ -375,7 +398,14 @@ class RecordButtonsWidget(QWidget):
         self.layout.setSpacing(0)
 
         # self.editBtn = QPushButton('Edit')
-        self.deleteBtn = QPushButton('Delete')
+        self.deleteBtn = QPushButton('X')
+        self.deleteBtn.setStyleSheet("QPushButton {color: #fff; "
+                                     "background-color: #d9534f;"
+                                     "border-radius:2px;"
+                                     "padding:10px;"
+                                     "margin:0 30px;"
+                                     
+                                     "border-color: #d43f3a;}")
         # add your buttons
         # self.layout.addWidget(self.editBtn)
         self.layout.addWidget(self.deleteBtn)
@@ -433,6 +463,7 @@ class record:
         self.studentName = studentName
         self.time = time
         self.date = date
+
 
 app=QApplication(sys.argv)
 loginWindow=mainPage()

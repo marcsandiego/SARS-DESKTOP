@@ -643,88 +643,169 @@ border-radius:5px;</string>
         <property name="palette">
          <palette>
           <active>
+           <colorrole role="WindowText">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>255</red>
+              <green>255</green>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>11</red>
+              <red>92</red>
+              <green>184</green>
+              <blue>92</blue>
+             </color>
+            </brush>
+           </colorrole>
+           <colorrole role="Text">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>255</red>
               <green>255</green>
-              <blue>11</blue>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
+           <colorrole role="ButtonText">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>255</red>
+              <green>255</green>
+              <blue>255</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>11</red>
-              <green>255</green>
-              <blue>11</blue>
+              <red>92</red>
+              <green>184</green>
+              <blue>92</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>11</red>
-              <green>255</green>
-              <blue>11</blue>
+              <red>92</red>
+              <green>184</green>
+              <blue>92</blue>
              </color>
             </brush>
            </colorrole>
           </active>
           <inactive>
+           <colorrole role="WindowText">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>255</red>
+              <green>255</green>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>11</red>
+              <red>92</red>
+              <green>184</green>
+              <blue>92</blue>
+             </color>
+            </brush>
+           </colorrole>
+           <colorrole role="Text">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>255</red>
               <green>255</green>
-              <blue>11</blue>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
+           <colorrole role="ButtonText">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>255</red>
+              <green>255</green>
+              <blue>255</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>11</red>
-              <green>255</green>
-              <blue>11</blue>
+              <red>92</red>
+              <green>184</green>
+              <blue>92</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>11</red>
-              <green>255</green>
-              <blue>11</blue>
+              <red>92</red>
+              <green>184</green>
+              <blue>92</blue>
              </color>
             </brush>
            </colorrole>
           </inactive>
           <disabled>
+           <colorrole role="WindowText">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>255</red>
+              <green>255</green>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>11</red>
+              <red>92</red>
+              <green>184</green>
+              <blue>92</blue>
+             </color>
+            </brush>
+           </colorrole>
+           <colorrole role="Text">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>255</red>
               <green>255</green>
-              <blue>11</blue>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
+           <colorrole role="ButtonText">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>255</red>
+              <green>255</green>
+              <blue>255</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>11</red>
-              <green>255</green>
-              <blue>11</blue>
+              <red>92</red>
+              <green>184</green>
+              <blue>92</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>11</red>
-              <green>255</green>
-              <blue>11</blue>
+              <red>92</red>
+              <green>184</green>
+              <blue>92</blue>
              </color>
             </brush>
            </colorrole>
@@ -735,7 +816,11 @@ border-radius:5px;</string>
          <bool>false</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: #0bff0b
+         <string notr="true">background-color: #5cb85c;
+color:#fff;
+border-color: #4cae4c;
+border-radius:5px;
+
 </string>
         </property>
         <property name="text">
@@ -751,34 +836,82 @@ border-radius:5px;</string>
           <height>381</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#f5f5f5;</string>
+        </property>
         <column>
          <property name="text">
           <string>Username</string>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="NoBrush">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
          </property>
         </column>
         <column>
          <property name="text">
           <string>Password</string>
          </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
         </column>
         <column>
          <property name="text">
           <string>First Name</string>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
          </property>
         </column>
         <column>
          <property name="text">
           <string>Middle Name</string>
          </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
         </column>
         <column>
          <property name="text">
           <string>Last Name</string>
          </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
         </column>
         <column>
          <property name="text">
           <string>Action</string>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
          </property>
         </column>
        </widget>
@@ -801,8 +934,14 @@ border-radius:5px;</string>
           <height>16</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
-         <string>Search</string>
+         <string>Search:</string>
         </property>
        </widget>
       </widget>
@@ -844,7 +983,11 @@ border-radius:5px;</string>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: #0bff0b
+         <string notr="true">background-color: #5cb85c;
+color:#fff;
+border-color: #4cae4c;
+border-radius:5px;
+
 </string>
         </property>
         <property name="text">
@@ -860,39 +1003,160 @@ border-radius:5px;</string>
           <height>381</height>
          </rect>
         </property>
+        <property name="minimumSize">
+         <size>
+          <width>1071</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#f5f5f5;</string>
+        </property>
         <column>
          <property name="text">
           <string>Student ID</string>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="background">
+          <color>
+           <red>217</red>
+           <green>237</green>
+           <blue>247</blue>
+          </color>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="NoBrush">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
          </property>
         </column>
         <column>
          <property name="text">
           <string>First Name</string>
          </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="NoBrush">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </property>
         </column>
         <column>
          <property name="text">
           <string>Middle Name</string>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="NoBrush">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
          </property>
         </column>
         <column>
          <property name="text">
           <string>Last Name</string>
          </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="NoBrush">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </property>
         </column>
         <column>
          <property name="text">
           <string>Course</string>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="NoBrush">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
          </property>
         </column>
         <column>
          <property name="text">
           <string>Section</string>
          </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="NoBrush">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </property>
         </column>
         <column>
          <property name="text">
           <string>Action</string>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="NoBrush">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
          </property>
         </column>
        </widget>
@@ -905,8 +1169,14 @@ border-radius:5px;</string>
           <height>16</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
-         <string>Search</string>
+         <string>Search:</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="studentSearchFld">
@@ -957,6 +1227,9 @@ border-radius:5px;</string>
           <height>381</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#f5f5f5;</string>
+        </property>
         <column>
          <property name="text">
           <string>Student ID</string>
@@ -992,8 +1265,14 @@ border-radius:5px;</string>
           <height>16</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
-         <string>Search</string>
+         <string>Search:</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="recordSearchFld">

@@ -9,25 +9,20 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-# from main import mainPage
-import mysql.connector as mc
 
 
 class Ui_newAdminDialog(object):
-    def setupUi(self, newAdminDialog, mainPage):
-        self.newAdminDialog = newAdminDialog
-        self.newAdminDialog.setObjectName("newAdminDialog")
-        self.newAdminDialog.setEnabled(True)
-        self.newAdminDialog.resize(485, 430)
-        self.newAdminDialog.setModal(True)
-        self.mainPage = mainPage
+    def setupUi(self, newAdminDialog):
+        newAdminDialog.setObjectName("newAdminDialog")
+        newAdminDialog.setEnabled(True)
+        newAdminDialog.resize(485, 430)
+        newAdminDialog.setModal(True)
         self.newAdminBtns = QtWidgets.QDialogButtonBox(newAdminDialog)
         self.newAdminBtns.setEnabled(True)
         self.newAdminBtns.setGeometry(QtCore.QRect(230, 380, 221, 41))
         self.newAdminBtns.setOrientation(QtCore.Qt.Horizontal)
-        self.newAdminBtns.setStandardButtons(QtWidgets.QDialogButtonBox.Save)
+        self.newAdminBtns.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.newAdminBtns.setObjectName("newAdminBtns")
-        # self.newAdminBtns.accepted.connect(self.okButton)
         self.usernameFld = QtWidgets.QLineEdit(newAdminDialog)
         self.usernameFld.setGeometry(QtCore.QRect(30, 50, 421, 31))
         self.usernameFld.setObjectName("usernameFld")
@@ -96,7 +91,7 @@ class Ui_newAdminDialog(object):
         self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(newAdminDialog)
-        self.label_3.setGeometry(QtCore.QRect(190, 220, 121, 21))
+        self.label_3.setGeometry(QtCore.QRect(190, 290, 121, 21))
         self.label_3.setStyleSheet("color: #a94442;")
         self.label_3.setText("")
         self.label_3.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
@@ -109,7 +104,7 @@ class Ui_newAdminDialog(object):
         self.label_4.setObjectName("label_4")
 
         self.retranslateUi(newAdminDialog)
-        self.newAdminBtns.accepted.connect(self.okButton)
+        self.newAdminBtns.accepted.connect(newAdminDialog.accept)
         self.newAdminBtns.rejected.connect(newAdminDialog.reject)
         QtCore.QMetaObject.connectSlotsByName(newAdminDialog)
 
@@ -119,78 +114,9 @@ class Ui_newAdminDialog(object):
         self.UsernameLbl.setText(_translate("newAdminDialog", "Username:"))
         self.passwordLbl.setText(_translate("newAdminDialog", "Password:"))
         self.firstNameLbl.setText(_translate("newAdminDialog", "First Name:"))
-        self.middleNameFld.setPlaceholderText(_translate("newAdminDialog", "(Optional)"))
+        self.firstNameFld.setPlaceholderText(_translate("newAdminDialog", "(Optional)"))
         self.middleNameLbl.setText(_translate("newAdminDialog", "Middle Name:"))
         self.lastNameLbl.setText(_translate("newAdminDialog", "Last Name:"))
-
-    def okButton(self):
-        username = self.usernameFld.text()
-        password = self.passwordFld.text()
-        fName = self.firstNameFld.text()
-        mName = self.middleNameFld.text()
-        lName = self.lastNameFld.text()
-        count = 0
-        # sb = self.buttonBox.standardButton(button)
-        # if self.newAdminBtns.:
-        
-        if username == "":
-            print("EMPTY FIELDS")
-            # #FF0000
-            self.label.setText("Please fill out this field.")
-        else:
-            self.label.setText("")
-            mydb = mc.connect(
-            host="localhost",
-            user="root",
-            password="",
-            database="db_sars"
-            )
-            mycursor = mydb.cursor()
-            query = "SELECT * FROM admin WHERE '" + username + "' LIKE username"
-            mycursor.execute(query)
-            result = mycursor.fetchone()
-            
-            if result is None:
-                count+=1
-            else:
-                self.label.setText("Username already taken")
-         
-        
-        if password == "":
-            self.label_2.setText("Please fill out this field.")
-        else:
-            self.label_2.setText("")
-            count+=1
-            
-        if fName == "":
-            self.label_3.setText("Please fill out this field.")
-        else:
-            self.label_3.setText("")
-            count+=1
-            
-        if lName == "":
-            self.label_4.setText("Please fill out this field.")
-        else:
-            self.label_4.setText("")
-            count+=1
-            
-        if count == 4:
-            mydb = mc.connect(
-            host="localhost",
-            user="root",
-            password="",
-            database="db_sars"
-            )
-            mycursor = mydb.cursor()
-            query = "INSERT INTO admin (username, password, firstname, middlename, lastname) VALUES (%s, %s, %s, %s, %s)"
-            val = (username, password, fName, mName, lName)
-            mycursor.execute(query, val)
-            mydb.commit()
-            print("Aba ayos ah")
-            self.mainPage.loadAdminTable()
-            self.newAdminDialog.close()
-
-
 
 
 if __name__ == "__main__":
